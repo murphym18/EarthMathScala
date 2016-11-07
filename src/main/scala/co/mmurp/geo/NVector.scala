@@ -1,7 +1,7 @@
 package co.mmurp.geo
 
 import breeze.linalg._
-import scala.math.{cos, sin, asin, atan2}
+import scala.math.{cos, sin, asin, atan2, toRadians}
 
 private object Helpers {
 
@@ -9,8 +9,8 @@ private object Helpers {
 }
 object NVector {
   def normalVector(lat: Latitude, long: Longitude): DenseVector[Double] = {
-    val phi = lat.asDouble
-    val lambda = long.asDouble
+    val phi = toRadians(lat.asDouble)
+    val lambda = toRadians(long.asDouble)
     val cosLat = cos(phi)
     val x = cosLat * cos(lambda)
     val y = cosLat * sin(lambda)
